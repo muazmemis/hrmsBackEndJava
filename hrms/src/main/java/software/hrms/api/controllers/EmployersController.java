@@ -1,11 +1,5 @@
 package software.hrms.api.controllers;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,29 +12,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import software.hrms.business.abstracts.JobTitleService;
+import software.hrms.business.abstracts.EmployerService;
 import software.hrms.core.utilities.results.DataResult;
 import software.hrms.core.utilities.results.ErrorDataResult;
-import software.hrms.core.utilities.results.Result;
-import software.hrms.entities.concretes.JobTitle;
+import software.hrms.entities.concretes.Employer;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/api/jobtitles/")
-public class JobTitlesController {
-	
-	private final JobTitleService jobTitleService;
-	
+@RequestMapping("/api/employers/")
+public class EmployersController {
+
+	private EmployerService employerService;
+
 	@Autowired
-	public JobTitlesController(JobTitleService jobTitleService) {
-		super();
-		this.jobTitleService = jobTitleService;
+	public EmployersController(EmployerService employerService) {
+		this.employerService = employerService;
 	}
 
-	@PostMapping("add")
-	private ResponseEntity<?> Add(@Valid @RequestBody JobTitle jobTitle) {
-		return ResponseEntity.ok(this.jobTitleService.add(jobTitle));
-	}	
+	@PostMapping("register")
+	private ResponseEntity<?> register(@Valid @RequestBody Employer employer) {
+		return ResponseEntity.ok(this.employerService.register(employer));
+	}
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -55,9 +52,10 @@ public class JobTitlesController {
 		= new ErrorDataResult<Object>(validationErrors,"Doğrulama hataları");
 		return errors;
 	}
-	
+
 	@GetMapping("getall")
-	public DataResult<List<JobTitle>> getAll() {
-		return this.jobTitleService.getAll();
+	private DataResult<List<Employer>> getAll() {
+		return this.employerService.getAll();
 	}
+
 }

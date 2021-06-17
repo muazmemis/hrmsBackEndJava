@@ -1,9 +1,18 @@
 package software.hrms.entities.concretes;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "job_titles")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobTitle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,30 +20,8 @@ public class JobTitle {
 	private int id;
 
 	@Column(name = "title")
+	@NotBlank
+	@NotNull
 	private String title;
 
-	public JobTitle(int id, String title) {
-		super();
-		this.id = id;
-		this.title = title;
-	}
-
-	public JobTitle() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 }
