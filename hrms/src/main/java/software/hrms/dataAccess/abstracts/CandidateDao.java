@@ -7,4 +7,5 @@ import software.hrms.entities.concretes.Candidate;
 
 public interface CandidateDao  extends JpaRepository<Candidate, Integer>{
 
+	public Candidate getByIdentityNumberEquals(String nationalityId); 
 }

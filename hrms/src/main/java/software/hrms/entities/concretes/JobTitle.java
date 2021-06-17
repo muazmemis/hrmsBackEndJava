@@ -1,6 +1,8 @@
 package software.hrms.entities.concretes;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,6 +20,8 @@ public class JobTitle {
 	private int id;
 
 	@Column(name = "title")
+	@NotBlank
+	@NotNull
 	private String title;
 
 }

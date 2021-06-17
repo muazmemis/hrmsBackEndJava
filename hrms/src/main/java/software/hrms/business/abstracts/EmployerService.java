@@ -8,7 +8,7 @@ import software.hrms.entities.concretes.Employer;
 
 public interface EmployerService {
 
-	Result add(Employer employer);
-	Result delete(Employer employer);
+	Result register(Employer employer);
+
 	DataResult<List<Employer>> getAll();
 }

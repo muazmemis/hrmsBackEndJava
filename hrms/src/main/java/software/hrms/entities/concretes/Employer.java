@@ -21,6 +21,8 @@ import software.hrms.core.concretes.User;
 public class Employer extends User{
 
 	@Column(name = "company_name", nullable = false)
+	@NotBlank
+	@NotNull(message="required")
 	private String companyName;
 	
 	@Column(name = "web_address", nullable = false)
@@ -31,7 +33,7 @@ public class Employer extends User{
 	@Column(name = "phone_number", nullable = false)
 	@NotBlank
 	@NotNull(message="required")
-	@Pattern(regexp ="[0-9\\s]{12}")
+	@Pattern(regexp ="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$")
 	private String phoneNumber;
 	
 }

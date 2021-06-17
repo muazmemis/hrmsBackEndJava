@@ -11,7 +11,7 @@ import software.hrms.core.utilities.results.DataResult;
 import software.hrms.core.utilities.results.Result;
 import software.hrms.core.utilities.results.SuccessDataResult;
 import software.hrms.core.utilities.results.SuccessResult;
-import software.hrms.dataAccess.abstracts.UserDao;
+import software.hrms.core.abstracts.UserDao;
 
 public class UserManager implements UserService{
 

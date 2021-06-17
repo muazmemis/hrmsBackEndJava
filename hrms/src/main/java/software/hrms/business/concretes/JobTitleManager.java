@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import software.hrms.business.abstracts.JobTitleService;
 import software.hrms.business.constants.Messages;
+import software.hrms.core.utilities.business.BusinessRules;
 import software.hrms.core.utilities.results.DataResult;
+import software.hrms.core.utilities.results.ErrorResult;
 import software.hrms.core.utilities.results.Result;
 import software.hrms.core.utilities.results.SuccessDataResult;
 import software.hrms.core.utilities.results.SuccessResult;
@@ -27,10 +29,17 @@ public class JobTitleManager implements JobTitleService {
 
 	@Override
 	public Result add(JobTitle jobTitle) {
+
+		Result result = BusinessRules.run(existJobTitle(jobTitle.getTitle()));
+
+		if (result != null) {
+			return result;
+		}
+
 		this.jobTitleDao.save(jobTitle);
 		return new SuccessResult(Messages.jobTitleAdded);
 	}
-	
+
 	@Override
 	public Result delete(JobTitle jobTitle) {
 		this.jobTitleDao.delete(jobTitle);
@@ -42,5 +51,11 @@ public class JobTitleManager implements JobTitleService {
 		return new SuccessDataResult<List<JobTitle>>(this.jobTitleDao.findAll(), Messages.jobTitlesListed);
 	}
 
+	private Result existJobTitle(String jobTitle) {
+		if (this.jobTitleDao.getByTitleEquals(jobTitle) != null) {
+			return new ErrorResult("Bu pozisyon ismi daha önce oluşturulmuştur");
+		}
+		return new SuccessResult();
+	}
 
 }

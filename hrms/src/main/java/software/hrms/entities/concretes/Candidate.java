@@ -36,7 +36,6 @@ public class Candidate extends User {
 	private String identityNumber;
 
 	@Column(name = "birth_of_year", nullable = false)
-	@NotBlank
 	@NotNull(message = "required")
 	@Min(1970)
 	private int birthOfYear;
