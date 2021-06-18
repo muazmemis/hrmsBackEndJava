@@ -15,7 +15,7 @@ import software.hrms.core.utilities.results.SuccessDataResult;
 import software.hrms.core.utilities.results.SuccessResult;
 import software.hrms.core.utilities.verificationCode.VerificationCodeService;
 import software.hrms.dataAccess.abstracts.EmployerDao;
-import software.hrms.core.abstracts.UserDao;
+import software.hrms.core.dataAccess.UserDao;
 import software.hrms.entities.concretes.Employer;
 
 @Service

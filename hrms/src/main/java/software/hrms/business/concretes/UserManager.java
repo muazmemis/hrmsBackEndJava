@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import software.hrms.business.abstracts.UserService;
 import software.hrms.business.constants.Messages;
-import software.hrms.core.concretes.User;
+import software.hrms.core.entities.User;
 import software.hrms.core.utilities.results.DataResult;
 import software.hrms.core.utilities.results.Result;
 import software.hrms.core.utilities.results.SuccessDataResult;
 import software.hrms.core.utilities.results.SuccessResult;
-import software.hrms.core.abstracts.UserDao;
+import software.hrms.core.dataAccess.UserDao;
 
 public class UserManager implements UserService{
 

@@ -9,9 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import software.hrms.core.concretes.User;
+import software.hrms.core.entities.User;
 
-@PrimaryKeyJoinColumn(name="id",referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name="id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "candidates")

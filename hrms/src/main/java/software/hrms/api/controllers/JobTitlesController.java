@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import software.hrms.business.abstracts.JobTitleService;
 import software.hrms.core.utilities.results.DataResult;
 import software.hrms.core.utilities.results.ErrorDataResult;
-import software.hrms.core.utilities.results.Result;
 import software.hrms.entities.concretes.JobTitle;
 
 @RestController

@@ -16,7 +16,7 @@ import software.hrms.core.utilities.results.SuccessDataResult;
 import software.hrms.core.utilities.results.SuccessResult;
 import software.hrms.core.utilities.business.BusinessRules;
 import software.hrms.dataAccess.abstracts.CandidateDao;
-import software.hrms.core.abstracts.UserDao;
+import software.hrms.core.dataAccess.UserDao;
 import software.hrms.entities.concretes.Candidate;
 
 @Service
