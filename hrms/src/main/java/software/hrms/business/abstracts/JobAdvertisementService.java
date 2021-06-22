@@ -5,6 +5,7 @@ import java.util.List;
 import software.hrms.core.utilities.results.DataResult;
 import software.hrms.core.utilities.results.Result;
 import software.hrms.entities.concretes.JobAdvertisement;
+import software.hrms.entities.dtos.JobAdvertisementDto;
 
 public interface JobAdvertisementService {
 
@@ -18,11 +19,11 @@ public interface JobAdvertisementService {
 	
 	DataResult<List<JobAdvertisement>> getAll(int pageNo, int pageSize);
 	
-	DataResult<List<JobAdvertisement>> getByIsActive();
+	DataResult<List<JobAdvertisementDto>> getByIsActive();
 	
-	DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByDeadlineDesc();
+	DataResult<List<JobAdvertisementDto>> getByIsActiveTrueOrderByDeadlineDesc();
 	
-	DataResult<List<JobAdvertisement>> getByIsActiveTrueAndEmployer_Id(int employerId);
+	DataResult<List<JobAdvertisementDto>> getByIsActiveTrueAndEmployer_Id(int employerId);
 
 	DataResult<List<JobAdvertisement>> getByCity_CityId(int cityId);
 

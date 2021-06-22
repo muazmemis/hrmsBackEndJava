@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class JobAdvertisementDto {
 
-	private String companyName;
-
-	private String title;
-
+	private int id;
+	
 	private int numberOfAvailablePosition;
 
 	private LocalDate createdDate;
-	
+
 	private LocalDate deadline;
+	
+	private String companyName;
+
+	private String title;
 
 }

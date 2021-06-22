@@ -25,6 +25,7 @@ import software.hrms.core.utilities.results.DataResult;
 import software.hrms.core.utilities.results.ErrorDataResult;
 import software.hrms.core.utilities.results.Result;
 import software.hrms.entities.concretes.JobAdvertisement;
+import software.hrms.entities.dtos.JobAdvertisementDto;
 
 @RestController
 @RequestMapping("/api/jobadvertisements/")
@@ -71,17 +72,17 @@ public class JobAdvertisementsController {
 	}
 
 	@GetMapping("getActive")
-	public DataResult<List<JobAdvertisement>> getActive() {
+	public DataResult<List<JobAdvertisementDto>> getActive() {
 		return this.jobAdvertisementService.getByIsActive();
 	}
 
 	@GetMapping("getActiveOrderByDeadline")
-	public DataResult<List<JobAdvertisement>> getOrderByApplicationDeadline() {
+	public DataResult<List<JobAdvertisementDto>> getOrderByApplicationDeadline() {
 		return this.jobAdvertisementService.getByIsActiveTrueOrderByDeadlineDesc();
 	}
 
 	@GetMapping("getActiveEmployer")
-	public DataResult<List<JobAdvertisement>> getActiveEmployer(@RequestParam int employerId) {
+	public DataResult<List<JobAdvertisementDto>> getActiveEmployer(@RequestParam int employerId) {
 		return this.jobAdvertisementService.getByIsActiveTrueAndEmployer_Id(employerId);
 	}
 

@@ -1,5 +1,6 @@
 package software.hrms.business.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import software.hrms.core.utilities.results.SuccessDataResult;
 import software.hrms.core.utilities.results.SuccessResult;
 import software.hrms.dataAccess.abstracts.JobAdvertisementDao;
 import software.hrms.entities.concretes.JobAdvertisement;
+import software.hrms.entities.dtos.JobAdvertisementDto;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
@@ -29,6 +31,7 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 
 	@Override
 	public Result add(JobAdvertisement jobAdvertisement) {
+		jobAdvertisement.setCreatedDate(LocalDate.now());
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult("İş ilanı eklendi.");
 	}
@@ -67,22 +70,22 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActive() {
+	public DataResult<List<JobAdvertisementDto>> getByIsActive() {
 
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getByIsActiveTrue());
+		return new SuccessDataResult<List<JobAdvertisementDto>>(this.jobAdvertisementDao.getByIsActiveTrue());
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByDeadlineDesc() {
+	public DataResult<List<JobAdvertisementDto>> getByIsActiveTrueOrderByDeadlineDesc() {
 
-		return new SuccessDataResult<List<JobAdvertisement>>(
+		return new SuccessDataResult<List<JobAdvertisementDto>>(
 				this.jobAdvertisementDao.getByIsActiveTrueOrderByDeadlineDesc());
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueAndEmployer_Id(int employerId) {
+	public DataResult<List<JobAdvertisementDto>> getByIsActiveTrueAndEmployer_Id(int employerId) {
 
-		return new SuccessDataResult<List<JobAdvertisement>>(
+		return new SuccessDataResult<List<JobAdvertisementDto>>(
 				this.jobAdvertisementDao.getByIsActiveTrueAndEmployer_Id(employerId));
 	}
 
