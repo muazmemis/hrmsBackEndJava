@@ -12,9 +12,7 @@ import software.hrms.business.abstracts.CandidateService;
 import software.hrms.core.utilities.results.DataResult;
 import software.hrms.entities.concretes.Candidate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.validation.Valid;
 

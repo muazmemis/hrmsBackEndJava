@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -29,19 +30,19 @@ public class Employer extends User{
 	@NotBlank
 	@NotNull(message="required")
 	private String companyName;
-	
+
 	@Column(name = "web_address", nullable = false)
 	@NotBlank
 	@NotNull(message="required")
 	private String webSiteAdress;
-	
+
 	@Column(name = "phone_number", nullable = false)
 	@NotBlank
 	@NotNull(message="required")
 	@Pattern(regexp ="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$")
 	private String phoneNumber;
 	
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "employer")
 	private List<JobAdvertisement> jobAdvertisements;
 	

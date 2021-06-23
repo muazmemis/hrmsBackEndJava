@@ -1,23 +1,30 @@
 package software.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import software.hrms.core.entities.User;
+import software.hrms.entities.concretes.cv.Cv;
 
-@PrimaryKeyJoinColumn(name="id", referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name = "candidate_id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "candidates")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "cvs" })
 public class Candidate extends User {
 
 	@Column(name = "first_name", nullable = false)
@@ -40,4 +47,7 @@ public class Candidate extends User {
 	@Min(1970)
 	private int birthOfYear;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "candidate")
+	private List<Cv> cvs;
 }
