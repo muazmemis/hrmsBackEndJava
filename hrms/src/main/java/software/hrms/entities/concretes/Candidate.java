@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import software.hrms.core.entities.User;
-import software.hrms.entities.concretes.cv.Cv;
 
 @PrimaryKeyJoinColumn(name = "candidate_id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = false)
@@ -47,7 +46,4 @@ public class Candidate extends User {
 	@Min(1970)
 	private int birthOfYear;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "candidate")
-	private List<Cv> cvs;
 }
